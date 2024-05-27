@@ -1,0 +1,73 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": ["next/core-web-vitals", "prettier"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "impliedStrict": true,
+      "classes": true,
+      "jsx": true
+    }
+  },
+  "plugins": ["react", "prettier"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "import/first": "warn",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "import/no-anonymous-default-export": "off",
+    "import/prefer-default-export": "off",
+
+    "no-restricted-syntax": "off",
+    "no-else-return": "off",
+    "no-bitwise": [
+      "error",
+      {
+        "allow": ["~"]
+      }
+    ],
+    "no-unused-expressions": [
+      "warn",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "none",
+        "argsIgnorePattern": "props|state|res|next|^err|^_"
+      }
+    ],
+    "no-param-reassign": [
+      "off",
+      {
+        "props": false
+      }
+    ],
+    "no-console": "warn",
+    "no-restricted-globals": ["error", "isNan"],
+    "no-underscore-dangle": "off",
+    "no-unexpected-multiline": "off",
+    "no-plusplus": 0,
+    "no-undef":"error",
+
+    "prefer-destructuring": ["warn"],
+    "consistent-return": 0,
+    "func-names": "off",
+    "camelcase": 0,
+    "object-shorthand": ["error", "always"]
+  }
+}
