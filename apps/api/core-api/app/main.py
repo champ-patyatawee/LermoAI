@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from app.api import ping
+from app.api import ping, main
+from app.engine import init_engine
 
 app = FastAPI()
 
@@ -19,6 +20,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup():
+    init_engine()
     print("Starting up...")
 
 @app.on_event("shutdown")
@@ -26,3 +28,4 @@ async def shutdown():
     print("Shutting down...")
 
 app.include_router(ping.router)
+app.include_router(main.router)

@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="lE-7-FjfSVdCl9Yx0A4-" name="Page-1">
-        <mxGraphModel dx="720" dy="526" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="711" dy="1684" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -172,6 +172,12 @@
                 </mxCell>
                 <mxCell id="67" value="slide.md" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="425" y="1570" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="Podcast" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry y="-1080" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="Article" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="900" y="-1080" width="60" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

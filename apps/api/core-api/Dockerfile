@@ -24,7 +24,9 @@ COPY . .
 RUN mkdir /.local && chmod 777 /.local
 RUN mkdir /.cache && chmod 777 /.cache
 RUN pip install -r requirements.txt
+RUN pip install git+https://github.com/myshell-ai/MeloTTS.git
+RUN python -m unidic download
 
 EXPOSE 8000
 
-ENTRYPOINT python main.py
+# ENTRYPOINT python main.py
