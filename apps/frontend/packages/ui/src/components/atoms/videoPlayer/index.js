@@ -6,7 +6,7 @@ import 'video.js/dist/video-js.css';
 
 import Style from './style';
 
-const Video = ({ src }) => {
+const Video = ({ src, type }) => {
   const videoRef = useRef();
 
   const initEvent = () => {
@@ -31,7 +31,7 @@ const Video = ({ src }) => {
       playbackRates: [0.75, 1, 1.25, 1.5, 2],
       sources: [
         {
-          type: "video/youtube",
+          type: type || "video/mp4",
           src: src
         }
       ],

@@ -2,6 +2,7 @@ import { Layout, Col, Row, } from 'antd';
 import { useState, useEffect } from 'react';
 import HeaderMain from '../../organisms/headerMain';
 import SiderHome from '../../organisms/siderHome';
+import SideMenuBox from '../../molecules/sideMenuBox';
 import { useWindowSize } from "@uidotdev/usehooks";
  
 import './style.css';
@@ -40,7 +41,7 @@ const UserSidebarTemplate = ({ children }) => {
       <SiderHome isCollapsed={isCollapsed} />
       <Layout>
         <Row>
-          <Col xs={24} sm={24} md={24} lg={24}>
+          <Col xs={24} sm={24} md={20} lg={20}>
             <Content className="content-template">{children}</Content>
           </Col>
         </Row>

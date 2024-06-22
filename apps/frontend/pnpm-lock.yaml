@@ -59,6 +59,9 @@ importers:
       react-redux:
         specifier: ^9.1.0
         version: 9.1.0(react@18.2.0)(redux@5.0.1)
+      react-soundplayer:
+        specifier: ^1.0.5
+        version: 1.0.5
       redux:
         specifier: ^5.0.1
         version: 5.0.1
@@ -4325,6 +4328,10 @@ packages:
       upper-case: 1.1.3
     dev: true
 
+  /hoist-non-react-statics@2.5.5:
+    resolution: {integrity: sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==}
+    dev: false
+
   /hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
     dev: true
@@ -6893,6 +6900,17 @@ packages:
       use-sidecar: 1.1.2(react@18.2.0)
     dev: false
 
+  /react-soundplayer@1.0.5:
+    resolution: {integrity: sha512-g4OjyDehFtSK2nPueuS7phwo/ppLYvZcWdGv6Ah3mcJPouOlHbYaFKt6kT3kuce4IiFUN8Ns7tGCbaeWgecCKg==}
+    engines: {node: '>=8.0.0', npm: '>=5.5.0'}
+    dependencies:
+      classnames: 2.5.1
+      hoist-non-react-statics: 2.5.5
+      object-assign: 4.1.1
+      prop-types: 15.8.1
+      soundcloud-audio: 1.4.0
+    dev: false
+
   /react-style-singleton@2.2.1(react@18.2.0):
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
     engines: {node: '>=10'}
@@ -7474,6 +7492,10 @@ packages:
       is-plain-obj: 4.1.0
       sort-object-keys: 1.1.3
     dev: true
+
+  /soundcloud-audio@1.4.0:
+    resolution: {integrity: sha512-2kHyTfu+KNOLZuRKynaeTmj846deC1WbiDTu7rkd1/93lk9FxtgbGkNQSIy5H4gxZD9EEeTdXhkE7uiMwEXuEQ==}
+    dev: false
 
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}

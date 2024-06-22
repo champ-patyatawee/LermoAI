@@ -9,7 +9,8 @@
     "./homeTemplate": "./src/components/templates/home",
     "./promptInput": "./src/components/atoms/promptInput",
     "./slide": "./src/components/atoms/slide",
-    "./enterButton": "./src/components/atoms/enterButton"
+    "./enterButton": "./src/components/atoms/enterButton",
+    "./videoPlayer": "./src/components/atoms/videoPlayer"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import PromptInput from '@repo/ui/promptInput';
 import EnterButton from '@repo/ui/enterButton';
 import Slide from '@repo/ui/slide'
-import actions from '@root/src/redux/slide/actions';
+import VideoPlayer from '@repo/ui/videoPlayer';
+import actions from '@redux/podcast/actions';
 
 import {
   Layout, Col, Row, Button,
@@ -20,7 +21,11 @@ const Home = () => {
   }
 
   const onEnter = () => {
-    dispatch(actions.create_slide(prompt));
+    const data = {
+      prompt: prompt,
+      config: "v1, EN-Default"
+    }
+    dispatch(actions.createPodcast(data));
     console.log('Enter');
   }
 
@@ -28,7 +33,7 @@ const Home = () => {
     <>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={24} xl={24}>
-          <Slide src="http://localhost:4000/slide/index.html"></Slide>
+          <VideoPlayer src="http://localhost:8000/tmp/voice/v1.wav" type="audio/wav" />
         </Col>
         
         <Col xs={24} sm={24} md={24} xl={22}>

@@ -5,7 +5,6 @@ const { TextArea } = Input;
 
 const Component = ({ onPromptChange }) => (
     <TextArea
-      showCount
       onChange={onPromptChange}
       placeholder="Prompt"
       style={{ height: 120, resize: 'none' }}
