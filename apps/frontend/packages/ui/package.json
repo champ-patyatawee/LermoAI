@@ -10,7 +10,8 @@
     "./promptInput": "./src/components/atoms/promptInput",
     "./slide": "./src/components/atoms/slide",
     "./enterButton": "./src/components/atoms/enterButton",
-    "./videoPlayer": "./src/components/atoms/videoPlayer"
+    "./videoPlayer": "./src/components/atoms/videoPlayer",
+    "./audioPlayer": "./src/components/atoms/audioPlayer"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

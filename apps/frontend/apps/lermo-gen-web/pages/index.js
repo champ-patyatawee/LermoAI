@@ -5,6 +5,7 @@ import PromptInput from '@repo/ui/promptInput';
 import EnterButton from '@repo/ui/enterButton';
 import Slide from '@repo/ui/slide'
 import VideoPlayer from '@repo/ui/videoPlayer';
+import AudioPlayer from '@repo/ui/audioPlayer';
 import actions from '@redux/podcast/actions';
 
 import {
@@ -33,7 +34,7 @@ const Home = () => {
     <>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={24} xl={24}>
-          <VideoPlayer src="http://localhost:8000/tmp/voice/v1.wav" type="audio/wav" />
+          <AudioPlayer src="http://localhost:8000/tmp/voice/v1.wav" type="audio/wav" />
         </Col>
         
         <Col xs={24} sm={24} md={24} xl={22}>
