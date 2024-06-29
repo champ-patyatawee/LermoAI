@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends, Header, Request
 from fastapi.responses import StreamingResponse, FileResponse, JSONResponse
 
-from app.engine import create_podcast_script, text_to_voice, create_content_suggestions, test_model
+from app.engine import create_podcast_script, text_to_voice, create_content_suggestions
 
 router = APIRouter()
 
