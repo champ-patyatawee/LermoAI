@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 from app.api import ping, main
 from app.engine import init_engine
@@ -6,7 +7,8 @@ from app.engine import init_engine
 app = FastAPI()
 
 origins = [
-    "http://localhost",
+    "*",
+    "http://localhost:3000",
     "http://localhost:8080",
 ]
 
@@ -17,6 +19,8 @@ app.add_middleware(
     allow_methods=["DELETE", "GET", "POST", "PUT"],
     allow_headers=["*"],
 )
+
+app.mount("/tmp", StaticFiles(directory="/tmp"), name="tmp")
 
 @app.on_event("startup")
 async def startup():
