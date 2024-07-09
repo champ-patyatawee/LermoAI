@@ -41,7 +41,7 @@ const UserSidebarTemplate = ({ children }) => {
       <SiderHome isCollapsed={isCollapsed} />
       <Layout>
         <Row>
-          <Col xs={24} sm={24} md={20} lg={20}>
+          <Col xs={24} sm={24} md={24} lg={24}>
             <Content className="content-template">{children}</Content>
           </Col>
         </Row>

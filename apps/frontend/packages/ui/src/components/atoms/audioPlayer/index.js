@@ -39,7 +39,6 @@ const AudioPlayer = ({ src, type }) => {
       },
     };
 
-    // videojs.hook('setup', initEvent);
     const player = videojs(videoRef.current, videoJsOptions);
     player.addClass('vjs-lermo');
 
@@ -47,6 +46,17 @@ const AudioPlayer = ({ src, type }) => {
       player.dispose();
     };
   }, []);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (!src) return;
+
+    const player = videojs(videoRef.current);
+    player.src({
+      src,
+      type: '',
+    });
+  }, [src]);
 
   let LoadingComponent;
   if (!src) {

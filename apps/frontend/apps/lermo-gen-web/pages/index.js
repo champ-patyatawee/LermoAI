@@ -6,19 +6,48 @@ import EnterButton from '@repo/ui/enterButton';
 import Slide from '@repo/ui/slide'
 import VideoPlayer from '@repo/ui/videoPlayer';
 import AudioPlayer from '@repo/ui/audioPlayer';
+import ListSuggest from '@repo/ui/listSuggest';
+
 import actions from '@redux/podcast/actions';
 
 import {
-  Layout, Col, Row, Button,
+  Layout, Col, Row, Button, Divider
 } from 'antd';
 
 
 const Home = () => {
   const dispatch = useDispatch();
   const [prompt, setPrompt] = useState('');
+  const [audioSrc, setAudioSrc] = useState('');
+
+  const suggestedData = useSelector((state) => state.podcast.get('suggestedData'));
+  const podcastURL = useSelector((state) => state.podcast.get('full_url'));
+
+  useEffect(() => {
+    dispatch(actions.getPodcast());
+  }, []);
+
+  useEffect(() => {
+    if (podcastURL) {
+      setAudioSrc(podcastURL);
+    }
+  }, [podcastURL]);
+
+  useEffect(() => {
+
+  }, [prompt]);
+
+  const onClickSuggestion = (item) => {
+    const data = {
+      prompt: item,
+      config: "v1, EN-Default"
+    }
+    dispatch(actions.createPodcast(data));
+    dispatch(actions.suggest(data));
+  }
+  
   const onPromptChange = (e) => {
     setPrompt(e.target.value);
-    console.log('Change:', e.target.value);
   }
 
   const onEnter = () => {
@@ -27,28 +56,32 @@ const Home = () => {
       config: "v1, EN-Default"
     }
     dispatch(actions.createPodcast(data));
-    console.log('Enter');
+    dispatch(actions.suggest(data));
+    setAudioSrc('')
   }
 
   return (
     <>
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={24} xl={24}>
-          <AudioPlayer src="http://localhost:8000/tmp/voice/v1.wav" type="audio/wav" />
+        <Col xs={24} sm={24} md={19} xl={19}>
+          <AudioPlayer src={podcastURL || 'http://localhost:8000/tmp/voice/v1.wav'} type="audio/wav" />
         </Col>
-        
-        <Col xs={24} sm={24} md={24} xl={22}>
+        <Col xs={24} sm={24} md={4} xl={4}>
+          <ListSuggest items={suggestedData?.items} onClick={onClickSuggestion} />
+        </Col>
+      </Row>
+      <div style={{ marginBottom: '16px' }}></div>
+      <Row gutter={[16, 16]}>
+        <Col xs={24} sm={24} md={17} xl={17}>
           <PromptInput onPromptChange={onPromptChange} />
         </Col>
-
-        <Col xs={24} sm={24} md={24} xl={2}>
+        <Col xs={24} sm={24} md={2} xl={2}>
           <EnterButton onClick={onEnter} />
         </Col>
       </Row>
     </>
   )
 }
-
 
 Home.Layout = HomeTemplate;
 

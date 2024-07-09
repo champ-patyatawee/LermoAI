@@ -3,7 +3,7 @@ import { Http, HttpAuth } from '@helpers/httpClient';
 
 export default {
   getPodcast() {
-    const apiUrl = `${Config.API_ENDPOINT}/podcast`;
+    const apiUrl = `${Config.API_ENDPOINT}/tmp/voice/v1.wav`;
     return Http.get(apiUrl);
   },
 
@@ -15,5 +15,10 @@ export default {
   updatePodcast(data) {
     const apiUrl = `${Config.API_ENDPOINT}/podcast`;
     return Http.patch(apiUrl, data);
-  }
+  },
+
+  suggest(data) {
+    const apiUrl = `${Config.API_ENDPOINT}/suggest`;
+    return Http.post(apiUrl, data);
+  },
 }

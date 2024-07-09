@@ -18,9 +18,9 @@ const SiderHome = ({ isCollapsed }) => {
   return (
     <Style>
       <Sider
-        width={260}
+        width={80}
         collapsedWidth={100}
-        collapsed={isCollapsed}
+        collapsed={false}
         trigger={null}
         collapsible
       >
@@ -33,15 +33,15 @@ const SiderHome = ({ isCollapsed }) => {
         >
           <Menu.Item key="/article" icon={<IconArticle />}>
             <Link legacyBehavior href="/coming">
-              <a>Article</a>
+              <a></a>
             </Link>
           </Menu.Item>
           <Menu.Item key="/podcast" icon={<IconPodcast />}>
-            <a>Podcast</a>
+            <a></a>
           </Menu.Item>
           <Menu.Item key="/content" icon={<IconPlaylist />}>
             <Link legacyBehavior href="/content">
-              <a>Video</a>
+              <a></a>
             </Link>
           </Menu.Item>
         </Menu>

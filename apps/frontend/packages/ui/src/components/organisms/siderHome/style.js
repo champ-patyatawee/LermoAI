@@ -4,7 +4,7 @@ import wrapProps from '../../atoms/wrapProps';
 export default wrapProps(styled.div`
   .ant-layout-sider {
     height: 100%;
-    padding: 0px 24px 24px;
+    padding: 0px 0px 0px;
 
     background: #fff;
     box-shadow: 1px 1px 10px #eee;
@@ -44,7 +44,6 @@ export default wrapProps(styled.div`
       transition: none;
 
       .anticon, svg {
-        margin-right: 14px;
         font-size: 1.4em;
         transition: .2s;
       }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import wrapProps from '../../atoms/wrapProps';
+import wrapProps from '../wrapProps';
 
 export default wrapProps(styled.div`
   .ant-layout-sider {

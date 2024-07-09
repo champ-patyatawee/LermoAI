@@ -178,15 +178,15 @@ const IconLive = () => (
 );
 const IconPodcast = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M18.0025 10.9996V13.0004" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M21.0037 9.99918V14.0008" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M15.0012 8.99876V15.0013" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M5.99749 13.0004V10.9996" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M2.99624 14.0008V9.99918" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M8.99874 15.0013V8.99876" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M12 6.99792V17.0021" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M21.0037 17.0021C21.0037 19.212 19.212 21.0038 17.0021 21.0038H6.99791C4.78799 21.0038 2.99625 19.212 2.99625 17.0021" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M2.99625 6.99792C2.99625 4.788 4.78799 2.99625 6.99791 2.99625H17.0021C19.212 2.99625 21.0037 4.788 21.0037 6.99792" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path fill="currentColor"fillRule="evenodd" clipRule="evenodd" d="M18.0025 10.9996V13.0004" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M21.0037 9.99918V14.0008" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M15.0012 8.99876V15.0013" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M5.99749 13.0004V10.9996" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M2.99624 14.0008V9.99918" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M8.99874 15.0013V8.99876" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M12 6.99792V17.0021" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path  fillRule="evenodd" clipRule="evenodd" d="M21.0037 17.0021C21.0037 19.212 19.212 21.0038 17.0021 21.0038H6.99791C4.78799 21.0038 2.99625 19.212 2.99625 17.0021" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path  fillRule="evenodd" clipRule="evenodd" d="M2.99625 6.99792C2.99625 4.788 4.78799 2.99625 6.99791 2.99625H17.0021C19.212 2.99625 21.0037 4.788 21.0037 6.99792" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 )
 

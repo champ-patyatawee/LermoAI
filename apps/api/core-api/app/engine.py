@@ -19,8 +19,6 @@ def init_engine():
 def create_content_suggestions(query: str):
   parser = JsonOutputParser(pydantic_object=Topic)
 
-  print(parser.get_format_instructions())
-
   prompt = PromptTemplate(
       template="List 3 learning topics based on query.\n{format_instructions}\n {query}\n",
       input_variables=["query"],

@@ -11,7 +11,8 @@
     "./slide": "./src/components/atoms/slide",
     "./enterButton": "./src/components/atoms/enterButton",
     "./videoPlayer": "./src/components/atoms/videoPlayer",
-    "./audioPlayer": "./src/components/atoms/audioPlayer"
+    "./audioPlayer": "./src/components/atoms/audioPlayer",
+    "./listSuggest": "./src/components/atoms/listSuggest"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
