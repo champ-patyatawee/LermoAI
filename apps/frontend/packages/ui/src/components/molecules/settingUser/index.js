@@ -10,15 +10,47 @@ const SettingUser = ({ logout }) => {
   const dispatch = useDispatch();
 
   const menu = (
-    <Menu style={{ width: '200px' }}>
+    <Menu style={{ width: '220px' }}>
       <Menu.Item>
         <Link href="/profile/edit">
-          <UserOutlined /> Profile
+          <UserOutlined /> Professor Pine <br></br> Role: Main teacher
         </Link>
       </Menu.Item>
-      <Menu.Item onClick={() => dispatch(logout())}>
-        <LogoutOutlined /> Log out
+
+      <Menu.Item>
+        <Link href="/profile/edit">
+          <UserOutlined /> Techie Terry <br></br> Role: Technology and computer science expert
+        </Link>
       </Menu.Item>
+
+      <Menu.Item>
+        <Link href="/profile/edit">
+        <UserOutlined /> Scientist Sam
+        Role: Science teacher (biology, chemistry, physics)
+        </Link>
+      </Menu.Item>
+
+      <Menu.Item>
+        <Link href="/profile/edit">
+        <UserOutlined /> Scientist Sam
+        Role: Science teacher (biology, chemistry, physics)
+        </Link>
+      </Menu.Item>
+
+      <Menu.Item>
+        <Link href="/profile/edit">
+        <UserOutlined /> Scientist Sam
+        Role: Science teacher (biology, chemistry, physics)
+        </Link>
+      </Menu.Item>
+
+      <Menu.Item>
+        <Link href="/profile/edit">
+        <UserOutlined /> Scientist Sam
+        Role: Science teacher (biology, chemistry, physics)
+        </Link>
+      </Menu.Item>
+      
     </Menu>
   );
 

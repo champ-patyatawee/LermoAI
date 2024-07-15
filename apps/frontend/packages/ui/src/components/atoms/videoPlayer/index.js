@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { DoubleRightOutlined, DoubleLeftOutlined } from '@ant-design/icons';
 import videojs from 'video.js';
-import 'videojs-youtube';
 import 'video.js/dist/video-js.css';
 
 import Style from './style';
