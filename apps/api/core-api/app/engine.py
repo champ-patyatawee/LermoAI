@@ -6,6 +6,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 
 llm = None
+Agent = None
 VOICE_ENGINE = None
 device = 'cpu'
 def init_engine():
@@ -36,7 +37,7 @@ def create_podcast_script(content: str):
   result = llm.invoke(prompt.format(content=content))
   return result.content
 
-def create_article(content: str):
+# def create_article(content: str):
 
 def text_to_voice(text: str, file_path: str, speaker: str):
     speed = 1

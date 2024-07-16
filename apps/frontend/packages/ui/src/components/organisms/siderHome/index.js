@@ -32,15 +32,17 @@ const SiderHome = ({ isCollapsed }) => {
           selectedKeys={[pathname]}
         >
           <Menu.Item key="/article" icon={<IconArticle />}>
-            <Link legacyBehavior href="/coming">
+            <Link legacyBehavior href="/article">
               <a></a>
             </Link>
           </Menu.Item>
           <Menu.Item key="/podcast" icon={<IconPodcast />}>
-            <a></a>
+            <Link legacyBehavior href="/podcast">
+              <a></a>
+            </Link>
           </Menu.Item>
-          <Menu.Item key="/content" icon={<IconPlaylist />}>
-            <Link legacyBehavior href="/content">
+          <Menu.Item key="/video" icon={<IconPlaylist />}>
+            <Link legacyBehavior href="/video">
               <a></a>
             </Link>
           </Menu.Item>

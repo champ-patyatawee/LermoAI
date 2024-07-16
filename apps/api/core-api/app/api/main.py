@@ -2,8 +2,28 @@ from fastapi import APIRouter, HTTPException, Depends, Header, Request
 from fastapi.responses import StreamingResponse, FileResponse, JSONResponse
 
 from app.engine import create_podcast_script, text_to_voice, create_content_suggestions
+import json
 
 router = APIRouter()
+
+@router.get("/agent")
+async def get_template():
+    try:
+        with open('/app/template.json', 'r') as file:
+            template_data = json.load(file)
+        return JSONResponse(content=template_data, media_type="application/json")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/config")
+async def config(request: Request):
+  try:
+    params = await request.json()
+    return JSONResponse(content={
+            "config": "content"
+        }, media_type="application/json")
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/podcast")
 async def chat_with_model(request: Request):
