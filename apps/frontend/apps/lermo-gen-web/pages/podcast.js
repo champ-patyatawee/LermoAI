@@ -18,10 +18,10 @@ import {
 const Podcast = () => {
   const dispatch = useDispatch();
   const [prompt, setPrompt] = useState('');
-  const [audioSrc, setAudioSrc] = useState('http://localhost:8000/tmp/voice/v1.wav');
+  const [audioSrc, setAudioSrc] = useState('');
 
   const suggestedData = useSelector((state) => state.podcast.get('suggestedData'));
-  const podcastURL = useSelector((state) => state.podcast.get('full_url'));
+  const podcastURL = useSelector((state) => state.podcast.get('full_url')) || 'http://localhost:8000/tmp/voice/default.wav';
 
   useEffect(() => {
     dispatch(actions.getPodcast());
@@ -36,7 +36,6 @@ const Podcast = () => {
   const onClickSuggestion = (item) => {
     const data = {
       prompt: item,
-      config: "v1, EN-Default"
     }
     dispatch(actions.createPodcast(data));
     dispatch(actions.suggest(data));
@@ -49,7 +48,7 @@ const Podcast = () => {
   const onEnter = () => {
     const data = {
       prompt: prompt,
-      config: "v1, EN-Default"
+      config: "default, EN-Default"
     }
     dispatch(actions.createPodcast(data));
     dispatch(actions.suggest(data));
@@ -60,7 +59,7 @@ const Podcast = () => {
     <>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={19} xl={19}>
-          <AudioPlayer src={podcastURL} type="audio/wav" />
+          <AudioPlayer src={audioSrc} type="audio/wav" />
         </Col>
         <Col xs={24} sm={24} md={4} xl={4}>
           <ListSuggest items={suggestedData?.items} onClick={onClickSuggestion} />

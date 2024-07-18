@@ -13,7 +13,7 @@ def init_engine():
   global llm
   global VOICE_ENGINE
   if not llm:
-    llm = ChatOpenAI(model="gpt4", temperature=0)
+    llm = ChatOpenAI(model="gpt-4-turbo", temperature=0)
   if not VOICE_ENGINE:
       VOICE_ENGINE = TTS(language='EN', device=device)
 

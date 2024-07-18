@@ -9,7 +9,7 @@ router = APIRouter()
 @router.get("/agent")
 async def get_template():
     try:
-        with open('/app/template.json', 'r') as file:
+        with open('/app/app/agent_template.json', 'r') as file:
             template_data = json.load(file)
         return JSONResponse(content=template_data, media_type="application/json")
     except Exception as e:

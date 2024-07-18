@@ -8,7 +8,7 @@ import VideoPlayer from '@repo/ui/videoPlayer';
 import AudioPlayer from '@repo/ui/audioPlayer';
 import ListSuggest from '@repo/ui/listSuggest';
 
-// import actions from '@redux/Article/actions';
+import actions from '@redux/agent/actions';
 
 import {
   Layout, Col, Row, Button, Divider
@@ -18,8 +18,13 @@ import {
 const Article = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-  }, []);
+  // useEffect(() => {
+  //   dispatch(actions.getAgent());
+  // }, [])
+
+  const onSelectAgent = () => {
+    dispatch(actions.getAgent());
+  }
 
   const onClickSuggestion = (item) => {
 

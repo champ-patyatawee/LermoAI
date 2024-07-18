@@ -12,7 +12,8 @@
     "./enterButton": "./src/components/atoms/enterButton",
     "./videoPlayer": "./src/components/atoms/videoPlayer",
     "./audioPlayer": "./src/components/atoms/audioPlayer",
-    "./listSuggest": "./src/components/atoms/listSuggest"
+    "./listSuggest": "./src/components/atoms/listSuggest",
+    "./agentMenu": "./src/components/molecules/agentMenu"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

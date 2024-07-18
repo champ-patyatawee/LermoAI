@@ -9,7 +9,7 @@ import './style.css';
 
 const { Content } = Layout;
 
-const UserSidebarTemplate = ({ children }) => {
+const HomeTemplate = ({ children }) => {
   const size = useWindowSize();
   const { width } = size
 
@@ -50,4 +50,4 @@ const UserSidebarTemplate = ({ children }) => {
   );
 };
 
-export default UserSidebarTemplate
+export default HomeTemplate
