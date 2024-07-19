@@ -19,6 +19,7 @@ async def get_template():
 async def config(request: Request):
   try:
     params = await request.json()
+
     return JSONResponse(content={
             "config": "content"
         }, media_type="application/json")
@@ -49,20 +50,20 @@ async def chat_with_model(request: Request):
     raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/article")
-async def chat_llama(request: Request) -> StreamingResponse:
-    data = await request.json()
-    prompt = data.get("prompt")
+# @router.post("/article")
+# async def chat_llama(request: Request) -> StreamingResponse:
+#     data = await request.json()
+#     prompt = data.get("prompt")
 
-    template = '''
-    Context: {context}
+#     template = '''
+#     Context: {context}
 
-    Use the following pieces of context to answer the Question: {question}. 
-    If you don't know the answer, please answer 'I don't know'
-    '''
-    prompt = PromptTemplate(input_variables=["question", "context"], template=template)
-    final_prompt = prompt.format(question=question, context=search)
-    return StreamingResponse(run_llm_stream(final_prompt), media_type="text/event-stream")
+#     Use the following pieces of context to answer the Question: {question}. 
+#     If you don't know the answer, please answer 'I don't know'
+#     '''
+#     prompt = PromptTemplate(input_variables=["question", "context"], template=template)
+#     final_prompt = prompt.format(question=question, context=search)
+#     return StreamingResponse(run_llm_stream(final_prompt), media_type="text/event-stream")
 
 
 @router.post("/suggest")
