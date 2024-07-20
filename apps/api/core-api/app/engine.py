@@ -21,22 +21,12 @@ def init_engine():
   agent = list(filter(lambda x:x["name"]==config_data.get("agentName"),template_data))
 
   if not llm:
-    llm = ChatOpenAI(model="gpt-4-turbo", temperature=0)
+    llm = ChatOpenAI(model="gpt-4-turbo", temperature=0.5)
   if not VOICE_ENGINE:
     VOICE_ENGINE = TTS(language='EN', device=device)
 
 def create_content_suggestions(query: str):
     parser = JsonOutputParser(pydantic_object=Topic)
-    print(agent)
-    # template = f"""
-    #     Name: {agent[0]['name']}\n
-    #     Role: {agent[0]['role']}\n
-    #     Personality: {agent[0]['personality']}\n
-    #     Areas: {agent[0]['areas']}\n
-    #     Style: {agent[0]['style']}\n
-    #     Task: List 5 learning topics based on query.\n{{format_instructions}}\n {{query}}\n
-    # """
-
     template = f"""
         Name: {agent[0]['name']}\n
         Role: {agent[0]['role']}\n
@@ -50,7 +40,6 @@ def create_content_suggestions(query: str):
         input_variables=["query"],
         partial_variables={"format_instructions": parser.get_format_instructions()},
     )
-
     print(prompt)
     try:
         chain = prompt | llm | parser
@@ -61,15 +50,69 @@ def create_content_suggestions(query: str):
         logging.error(f"An error occurred while creating content suggestions: {e}")
         raise
     
-def create_podcast_script(content: str):
-  prompt = """
-  Go deep into {content} and explain like human talk max 300 words.
-  """
-  result = llm.invoke(prompt.format(content=content))
-  return result.content
+def create_podcast_script(input: str):
+  try:
+    template = f"""
+        Name: {agent[0]['name']}\n
+        Role: {agent[0]['role']}\n
+        Personality: {agent[0]['personality']}\n
+        Areas: {agent[0]['areas']}\n
+        Style: {agent[0]['style']}\n
+
+        Question: {input}\n
+        Objective: Describe a question like a human talk max ~500 words. Don't need to introduction or intoduce youself.
+    """
+
+    prompt = PromptTemplate(
+        template=template,
+        input_variables=["input"],
+    )
+
+    print(prompt)
+    chain = prompt | llm 
+    result = chain.invoke({"input": input})
+    print(result)
+    return result.content
+  except Exception as e:
+    logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.error(f"An error occurred: {e}")
+    raise
 
 def text_to_voice(text: str, file_path: str, speaker: str):
+  try:
     speed = 1
     speaker_ids = VOICE_ENGINE.hps.data.spk2id
     VOICE_ENGINE.tts_to_file(text, speaker_ids[speaker], file_path, speed=speed)
     print("Voice Generated")
+  except Exception as e:
+      logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+      logging.error(f"An error occurred: {e}")
+      raise
+
+
+def create_article(input: str):
+  try:
+      template = f"""
+          Name: {agent[0]['name']}\n
+          Role: {agent[0]['role']}\n
+          Personality: {agent[0]['personality']}\n
+          Areas: {agent[0]['areas']}\n
+          Style: {agent[0]['style']}\n
+
+          Create an article based on the following input.\n {{input}}\n
+          Output should be in markdown format.
+      """
+
+      prompt = PromptTemplate(
+          template=template,
+          input_variables=["input"],
+      )
+
+      print(prompt)
+      chain = prompt | llm 
+      result = chain.invoke({"input": input})
+      return result.content
+  except Exception as e:
+      logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+      logging.error(f"An error occurred: {e}")
+      raise
