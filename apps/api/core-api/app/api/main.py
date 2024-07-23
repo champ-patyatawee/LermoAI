@@ -35,17 +35,12 @@ async def config(request: Request):
 #     scheme = request.url.scheme
 #     netloc = request.url.netloc
 #     params = await request.json()
-#     config = params.get("config")
 #     prompt = params.get("prompt")
 #     text = create_podcast_script(prompt)
 
-#     config_array = config.split(", ")[:2] 
-#     file_name = config_array[0]
-#     speaker = config_array[1]
-#     file_path_full = f"/tmp/voice/{file_name}.wav"
-#     full_url = f"{scheme}://{netloc}/tmp/voice/{file_name}.wav"
+#     filePath = text_to_voice(text, file_path_full, speaker)
+#     full_url = f"{scheme}://{netloc}{filePath}"
 
-#     # text_to_voice(text, file_path_full, speaker)
 #     return JSONResponse(content={
 #             "full_url": full_url
 #         }, media_type="application/json")
@@ -59,8 +54,17 @@ async def chat_llama(request: Request) -> StreamingResponse:
   try:
       data = await request.json()
       prompt = data.get("prompt")
+      
+      scheme = request.url.scheme
+      netloc = request.url.netloc
+
       text = create_podcast_script(prompt)
-      return JSONResponse(content={"text": f"{text}"}, media_type="application/json")
+      filePath = text_to_voice(text)
+      full_url = f"{scheme}://{netloc}{filePath}"
+
+      return JSONResponse(content={
+        "full_url": full_url
+      }, media_type="application/json")
   except Exception as e:
     logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
     logging.error(f"An error occurred: {e}")

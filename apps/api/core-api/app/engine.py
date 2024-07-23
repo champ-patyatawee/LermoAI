@@ -11,10 +11,13 @@ llm = None
 agent = None
 VOICE_ENGINE = None
 device = 'cpu'
+config_data=None
+
 def init_engine():
   global llm
   global agent
   global VOICE_ENGINE
+  global config_data
 
   config_data = json.load(open('/app/app/config.json', 'r'))
   template_data = json.load(open('/app/app/agent_template.json', 'r'))
@@ -78,12 +81,17 @@ def create_podcast_script(input: str):
     logging.error(f"An error occurred: {e}")
     raise
 
-def text_to_voice(text: str, file_path: str, speaker: str):
+def text_to_voice(text: str):
   try:
-    speed = 1
+    file_name = config_data.get("podcastName")
+    speaker = config_data.get("voiceName")
+    file_path = f"/tmp/voice/{file_name}.wav"
+
+    speed = config_data.get("podcastSpeed")
     speaker_ids = VOICE_ENGINE.hps.data.spk2id
     VOICE_ENGINE.tts_to_file(text, speaker_ids[speaker], file_path, speed=speed)
     print("Voice Generated")
+    return file_path
   except Exception as e:
       logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
       logging.error(f"An error occurred: {e}")

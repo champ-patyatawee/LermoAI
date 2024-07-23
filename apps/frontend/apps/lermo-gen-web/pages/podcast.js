@@ -54,11 +54,19 @@ const Podcast = () => {
     setAudioSrc('')
   }
 
+  const audioPlayer = () => {
+    if (!audioSrc) return null
+    return (
+      <AudioPlayer src={audioSrc} type="audio/wav" />
+    )
+  }
+
   return (
     <>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={19} xl={19}>
-          <AudioPlayer src={audioSrc} type="audio/wav" />
+          {audioPlayer()}
+          {/* <AudioPlayer src={audioSrc} type="audio/wav" /> */}
         </Col>
         <Col xs={24} sm={24} md={4} xl={4}>
           <ListSuggest items={suggestedData?.items} onClick={onClickSuggestion} />

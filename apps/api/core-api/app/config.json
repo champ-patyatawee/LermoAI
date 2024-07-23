@@ -1,5 +1,6 @@
 {
   "agentName": "Lang Guru",
   "voiceName": "EN-Default",
-  "podcastName": "default"
+  "podcastName": "default",
+  "podcastSpeed": 1
 }
