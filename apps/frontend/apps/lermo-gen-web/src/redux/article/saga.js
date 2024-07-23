@@ -6,59 +6,37 @@ import Router from 'next/router';
 import actions from './actions';
 import articleAPI from './api';
 
-function* getPodcast() {
-  const res = yield call(articleAPI.getPodcast);
+function* getArticle() {
+  const res = yield call(articleAPI.getArticle);
   if (res) {
     yield put({
       type: actions.GET_ARTICLE_SUCCESS,
       payload: res,
     });
-    message.success('Get Podcast');
+    message.success('Get Article');
   } else {
-    message.error('Can\'t Get Podcast');
+    message.error('Can\'t Get Article');
   }
 }
 
-function* createPodcast(payload) {
+function* createArticle(payload) {
   const { data } = payload;
-  const res = yield call(articleAPI.createPodcast, data);
-  message.success('Creating Podcast');
-  if (res) {
+  const res = yield call(articleAPI.createArticle, data);
+  message.success('Creating Article');
+  if (res.data) {
     yield put({
       type: actions.CREATE_ARTICLE_SUCCESS,
-      payload: res,
+      payload: res.data,
     });
-    message.success('Podcast is ready');
+    message.success('Article is ready');
   } else {
-    message.error('Can\'t Create Podcast');
-  }
-}
-
-function* suggest(payload) {
-  try {
-    const res = yield call(articleAPI.suggest, payload.data);
-    if (res && res.data) {
-      yield put({
-        type: actions.SUGGEST_SUCCESS,
-        payload: res.data,
-      });
-      message.success('Suggestion made successfully');
-    } else {
-      throw new Error('Failed to make suggestion');
-    }
-  } catch (error) {
-    yield put({
-      type: actions.SUGGEST_FAIL,
-      error: error.message,
-    });
-    message.error('Could not make suggestion');
+    message.error('Can\'t Create Article');
   }
 }
 
 export default function* rootSaga() {
   yield all([
-    // takeEvery(actions.GET_ARTICLE, getPodcast),
-    takeEvery(actions.CREATE_ARTICLE, createPodcast),
-    takeEvery(actions.SUGGEST, suggest),
+    takeEvery(actions.GET_ARTICLE, getArticle),
+    takeEvery(actions.CREATE_ARTICLE, createArticle),
   ]);
 }

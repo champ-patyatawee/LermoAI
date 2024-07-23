@@ -1,10 +1,7 @@
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { ConfigProvider } from 'antd';
-import locale from 'antd/lib/locale/th_TH';
-
-// import 'swiper/swiper-bundle.min.css';
-
+import locale from 'antd/lib/locale/en_US';
 import '../styles/globals.css';
 
 import createStore from '../src/redux/store';

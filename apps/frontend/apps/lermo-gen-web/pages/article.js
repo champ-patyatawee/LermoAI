@@ -3,12 +3,16 @@ import HomeTemplate from '@repo/ui/homeTemplate';
 import { useDispatch, useSelector } from 'react-redux';
 import PromptInput from '@repo/ui/promptInput';
 import EnterButton from '@repo/ui/enterButton';
-import Slide from '@repo/ui/slide'
-import VideoPlayer from '@repo/ui/videoPlayer';
-import AudioPlayer from '@repo/ui/audioPlayer';
 import ListSuggest from '@repo/ui/listSuggest';
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+// import dynamic from 'next/dynamic';
 
-import actions from '@redux/agent/actions';
+// const DynamicMarkdown = dynamic(() => import('react-markdown'), {
+//   ssr: false,
+// });
+
+import actions from '@redux/article/actions';
 
 import {
   Layout, Col, Row, Button, Divider
@@ -17,14 +21,10 @@ import {
 
 const Article = () => {
   const dispatch = useDispatch();
+  const [prompt, setPrompt] = useState('');
 
-  // useEffect(() => {
-  //   dispatch(actions.getAgent());
-  // }, [])
+  const article = useSelector((state) => state.article.get('article')) ?? ''
 
-  const onSelectAgent = () => {
-    dispatch(actions.getAgent());
-  }
 
   const onClickSuggestion = (item) => {
 
@@ -35,14 +35,18 @@ const Article = () => {
   }
 
   const onEnter = () => {
+    const data = {
+      prompt: prompt
+    }
 
+    dispatch(actions.createArticle(data));
   }
 
   return (
     <>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={19} xl={19}>
-          Article xxxx
+          <Markdown remarkPlugins={[remarkGfm]}>{article}</Markdown>
         </Col>
         <Col xs={24} sm={24} md={4} xl={4}>
           <ListSuggest onClick={onClickSuggestion} />

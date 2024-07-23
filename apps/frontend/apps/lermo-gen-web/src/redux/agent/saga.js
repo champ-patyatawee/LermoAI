@@ -7,11 +7,11 @@ import agentAPI from './api';
 
 function* getAgent() {
   const res = yield call(agentAPI.getAgent);
-  if (res) {
+  if (res.data) {
     console.log(res)
     yield put({
       type: actions.GET_AGENT_SUCCESS,
-      payload: res,
+      payload: res.data,
     });
     message.success('Get Agent');
   } else {

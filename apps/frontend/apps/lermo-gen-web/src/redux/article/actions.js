@@ -11,11 +11,11 @@ const actions = {
   SUGGEST_SUCCESS: 'SUGGEST_SUCCESS',
   SUGGEST_FAIL: 'SUGGEST_FAIL',
 
-  getPodcast: () => ({
+  getArticle: () => ({
     type: actions.GET_ARTICLE
   }),
 
-  createPodcast: (data) => ({
+  createArticle: (data) => ({
     type: actions.CREATE_ARTICLE,
     data: data
   }),

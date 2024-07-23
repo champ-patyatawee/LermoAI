@@ -12,7 +12,7 @@ async def get_template():
   try:
       with open('/app/app/agent_template.json', 'r') as file:
           template_data = json.load(file)
-      return JSONResponse(content=template_data, media_type="application/json")
+      return JSONResponse(content={"data": template_data}, media_type="application/json")
   except Exception as e:
     logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
     logging.error(f"An error occurred: {e}")
@@ -60,7 +60,6 @@ async def chat_llama(request: Request) -> StreamingResponse:
       data = await request.json()
       prompt = data.get("prompt")
       text = create_podcast_script(prompt)
-      print(text)
       return JSONResponse(content={"text": f"{text}"}, media_type="application/json")
   except Exception as e:
     logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -74,8 +73,7 @@ async def chat_llama(request: Request) -> StreamingResponse:
       data = await request.json()
       prompt = data.get("prompt")
       article_content = create_article(prompt)
-      print(article_content)
-      return JSONResponse(content={"article": f"{article_content}"}, media_type="application/json")
+      return JSONResponse(content={"data": f"{article_content}"}, media_type="application/json")
   except Exception as e:
     logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
     logging.error(f"An error occurred: {e}")

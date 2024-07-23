@@ -9,7 +9,7 @@ import actions from '@redux/agent/actions';
 
 const AgentMenu = ({ }) => {
   const dispatch = useDispatch();
-  const agents = useSelector((state) => state.agent.get('agents')) || [];
+  const agents = useSelector((state) => state.agent.get('agents')) || []
 
   useEffect(() => {
     dispatch(actions.getAgent());

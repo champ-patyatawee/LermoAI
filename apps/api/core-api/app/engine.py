@@ -99,7 +99,8 @@ def create_article(input: str):
           Areas: {agent[0]['areas']}\n
           Style: {agent[0]['style']}\n
 
-          Create an article based on the following input.\n {{input}}\n
+          Objective: Create an article based on the following topic.\n {input}\n
+          Don't need to intoduce youself only create an article.\n
           Output should be in markdown format.
       """
 

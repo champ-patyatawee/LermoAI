@@ -3,7 +3,6 @@ import HomeTemplate from '@repo/ui/homeTemplate';
 import { useDispatch, useSelector } from 'react-redux';
 import PromptInput from '@repo/ui/promptInput';
 import EnterButton from '@repo/ui/enterButton';
-import Slide from '@repo/ui/slide'
 import VideoPlayer from '@repo/ui/videoPlayer';
 import AudioPlayer from '@repo/ui/audioPlayer';
 import ListSuggest from '@repo/ui/listSuggest';
