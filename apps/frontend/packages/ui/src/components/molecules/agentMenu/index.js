@@ -9,27 +9,41 @@ import actions from '@redux/agent/actions';
 
 const AgentMenu = ({ }) => {
   const dispatch = useDispatch();
+  const [current, setCurrent] = useState('Main Agent');
+
   const agents = useSelector((state) => state.agent.get('agents')) || []
 
   useEffect(() => {
     dispatch(actions.getAgent());
   }, [])
 
-  const onClickAgent = ({ name }) => {
-    message.success(name);
+  const onClick = (e) => {
+    console.log('click ', e.key);
+    setCurrent(e.key);
   }
 
-  const menuItems = agents.map((agent, index) => (
-    <Menu.Item key={index} >
-      {/* <div onClick={onClickAgent(agent.name)}>  */}
-      <UserOutlined /> {agent.name} <br />
-      {agent.role}
-      {/* </div> */}
-    </Menu.Item>
-  ));
+  // const onClick = (e) => {
+  //   console.log('click ', e);
+  //   // setCurrent(e.key);
+  // };
+  // const menuItems = agents.map((agent, index) => (
+  //   <Menu.Item key={index} >
+  //     {/* <div onClick={onClickAgent(agent.name)}>  */}
+  //     <UserOutlined /> {agent.name} <br />
+  //     {agent.role}
+  //     {/* </div> */}
+  //   </Menu.Item>
+  // ));
+
+
+  const items = agents.map((agent, index) => ({
+    label: agent.name,
+    key: agent.name,
+    icon: <UserOutlined />,
+  }));
 
   const menu = (
-    <Menu style={{ width: '220px' }}>{menuItems}</Menu>
+    <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
   );
 
   let AgentAvatar = <Avatar size={40} src="/default-avatar.jpg" />;

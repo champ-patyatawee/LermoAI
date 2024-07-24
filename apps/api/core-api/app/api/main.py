@@ -18,6 +18,31 @@ async def get_template():
     logging.error(f"An error occurred: {e}")
     raise HTTPException(status_code=500, detail=str(e))
 
+@router.post("/agent")
+async def update_agent(request: Request):
+  try:
+    params = await request.json()
+    with open('/app/app/agent_template.json', 'w') as file:
+        json.dump(params, file)
+    return JSONResponse(content={
+            "config": "content"
+        }, media_type="application/json")
+  except Exception as e:
+    logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.error(f"An error occurred: {e}")
+    raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/config")
+async def config():
+  try:
+      with open('/app/app/config.json', 'r') as file:
+          config_data = json.load(file)
+      return JSONResponse(content={"data": config_data}, media_type="application/json")
+  except Exception as e:
+    logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.error(f"An error occurred: {e}")
+    raise HTTPException(status_code=500, detail=str(e))
+
 @router.post("/config")
 async def config(request: Request):
   try:
