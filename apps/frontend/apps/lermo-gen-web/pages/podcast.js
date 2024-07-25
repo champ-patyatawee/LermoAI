@@ -19,7 +19,6 @@ const Podcast = () => {
   const [prompt, setPrompt] = useState('');
   const [audioSrc, setAudioSrc] = useState('');
 
-  const suggestedData = useSelector((state) => state.podcast.get('suggestedData'));
   const podcastURL = useSelector((state) => state.podcast.get('full_url')) || 'http://localhost:8000/tmp/voice/default.wav';
 
   useEffect(() => {
@@ -32,14 +31,6 @@ const Podcast = () => {
     }
   }, [podcastURL]);
 
-  const onClickSuggestion = (item) => {
-    const data = {
-      prompt: item,
-    }
-    dispatch(actions.createPodcast(data));
-    dispatch(actions.suggest(data));
-  }
-  
   const onPromptChange = (e) => {
     setPrompt(e.target.value);
   }
@@ -47,10 +38,8 @@ const Podcast = () => {
   const onEnter = () => {
     const data = {
       prompt: prompt,
-      config: "default, EN-Default"
     }
     dispatch(actions.createPodcast(data));
-    dispatch(actions.suggest(data));
     setAudioSrc('')
   }
 
