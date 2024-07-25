@@ -7,10 +7,20 @@ const IconHome = () => (
   </svg>
 );
 const IconArticle = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path fillRule="evenodd" clipRule="evenodd" d="M6 2.25C4.48079 2.25 3.25 3.48079 3.25 5V19C3.25 20.5192 4.48079 21.75 6 21.75H18C19.5192 21.75 20.75 20.5192 20.75 19V5C20.75 3.48079 19.5192 2.25 18 2.25H6ZM6 3.75C5.30921 3.75 4.75 4.30921 4.75 5V19C4.75 19.6908 5.30921 20.25 6 20.25H15.25V3.75H12.75V9C12.75 9.25993 12.6154 9.50133 12.3943 9.63799C12.1732 9.77464 11.8971 9.78707 11.6646 9.67082L10 8.83853L8.33541 9.67082C8.10292 9.78707 7.82681 9.77464 7.6057 9.63799C7.38459 9.50133 7.25 9.25993 7.25 9V3.75H6ZM8.75 3.75V7.78647L9.66459 7.32918C9.87574 7.22361 10.1243 7.22361 10.3354 7.32918L11.25 7.78647V3.75H8.75ZM16.75 3.75V20.25H18C18.6908 20.25 19.25 19.6908 19.25 19V5C19.25 4.30921 18.6908 3.75 18 3.75H16.75Z" />
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 13H8" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 16.5H16" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 21H18C19.1046 21 20 20.1046 20 19V8.41421C20 8.149 19.8946 7.89465 19.7071 7.70711L15.2929 3.29289C15.1054 3.10536 14.851 3 14.5858 3H6C4.89543 3 4 3.89543 4 5V19C4 20.1046 4.89543 21 6 21Z" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 9H16C14.8954 9 14 8.10457 14 7V3" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 );
+
+const IconVideo = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 10.0015C9.75002 9.64126 9.94381 9.30885 10.2573 9.13136C10.5708 8.95386 10.9555 8.9587 11.2645 9.14404L14.5953 11.1425C14.8964 11.3233 15.0807 11.6487 15.0807 12C15.0807 12.3512 14.8964 12.6767 14.5953 12.8575L11.2645 14.856C10.9555 15.0413 10.5708 15.0462 10.2573 14.8687C9.94378 14.6912 9.75 14.3587 9.75 13.9985V10.0015Z" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="3" y="3" width="18" height="18" rx="5" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+)
 const IconPlaylist = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fillRule="evenodd" clipRule="evenodd" d="M11.3888 10.0964C10.4203 9.52344 9.19707 10.2227 9.195 11.3456V15.651C9.195 16.7772 10.4207 17.4733 11.3884 16.9018L15.0277 14.7496C15.9787 14.1872 15.9787 12.8108 15.0278 12.2484L11.3888 10.0964ZM14.1956 13.499L10.695 15.5692V11.4288L14.1956 13.499Z" />
@@ -193,6 +203,7 @@ const IconPodcast = () => (
 export {
   IconHome,
   IconArticle,
+  IconVideo,
   IconPlaylist,
   IconClassroom,
   IconSetting,

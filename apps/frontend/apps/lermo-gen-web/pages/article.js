@@ -18,11 +18,6 @@ const Article = () => {
   const [prompt, setPrompt] = useState('');
 
   const article = useSelector((state) => state.article.get('article')) ?? ''
-
-
-  const onClickSuggestion = (item) => {
-
-  }
   
   const onPromptChange = (e) => {
     setPrompt(e.target.value);
@@ -39,19 +34,18 @@ const Article = () => {
   return (
     <>
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={19} xl={19}>
-          <Markdown remarkPlugins={[remarkGfm]}>{article}</Markdown>
-        </Col>
-        <Col xs={24} sm={24} md={4} xl={4}>
-          <ListSuggest onClick={onClickSuggestion} />
+        <Col xs={24} sm={24} md={{ span: 20 , offset: 2}} xl={{ span: 19 , offset: 2}}>
+          <div style={{ minHeight: '70vh', background: '#ebebeb', borderRadius: '8px'}}>
+            <Markdown >{article}</Markdown>
+          </div>
         </Col>
       </Row>
       <div style={{ marginBottom: '16px' }}></div>
-      <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={17} xl={17}>
+      <Row  gutter={[16, 16]}>
+        <Col xs={24} sm={24} md={{ span: 17 , offset: 2}} xl={{ span: 17 , offset: 2}}>
           <PromptInput onPromptChange={onPromptChange} />
         </Col>
-        <Col xs={24} sm={24} md={2} xl={2}>
+        <Col xs={24} sm={24} md={3} xl={2}>
           <EnterButton onClick={onEnter} />
         </Col>
       </Row>

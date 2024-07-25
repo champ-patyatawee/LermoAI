@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import {
-  IconHome, IconPlaylist, IconArticle, IconClassroom, IconSetting, IconEdit, IconCopy, IconPodcast
+  IconHome, IconVideo, IconPlaylist, IconArticle, IconClassroom, IconSetting, IconEdit, IconCopy, IconPodcast
 } from '../../atoms/icons';
 
 import Style from './style';
@@ -41,7 +41,7 @@ const SiderHome = ({ isCollapsed }) => {
               <a></a>
             </Link>
           </Menu.Item>
-          <Menu.Item key="/video" icon={<IconPlaylist />}>
+          <Menu.Item key="/video" icon={<IconVideo />}>
             <Link legacyBehavior href="/video">
               <a></a>
             </Link>

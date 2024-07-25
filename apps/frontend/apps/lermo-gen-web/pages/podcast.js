@@ -54,27 +54,16 @@ const Podcast = () => {
     setAudioSrc('')
   }
 
-  const audioPlayer = () => {
-    if (!audioSrc) return null
-    return (
-      <AudioPlayer src={audioSrc} type="audio/wav" />
-    )
-  }
-
   return (
     <>
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={19} xl={19}>
-          {audioPlayer()}
-          {/* <AudioPlayer src={audioSrc} type="audio/wav" /> */}
-        </Col>
-        <Col xs={24} sm={24} md={4} xl={4}>
-          <ListSuggest items={suggestedData?.items} onClick={onClickSuggestion} />
+        <Col xs={24} sm={24} md={{ span: 20 , offset: 2}} xl={{ span: 18 , offset: 2}}>
+          <AudioPlayer src={audioSrc} type="audio/wav" />
         </Col>
       </Row>
       <div style={{ marginBottom: '16px' }}></div>
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={17} xl={17}>
+        <Col xs={24} sm={24} md={{ span: 18 , offset: 2}} xl={{ span: 16 , offset: 2}}>
           <PromptInput onPromptChange={onPromptChange} />
         </Col>
         <Col xs={24} sm={24} md={2} xl={2}>

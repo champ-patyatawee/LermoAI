@@ -26,16 +26,13 @@ const Video = () => {
   return (
     <>
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={19} xl={19}>
+        <Col xs={24} sm={24} md={{ span: 20 , offset: 2}} xl={{ span: 18 , offset: 2}}>
           <VideoPlayer src="" type="video/mp4" />
-        </Col>
-        <Col xs={24} sm={24} md={4} xl={4}>
-          <ListSuggest items={[]} onClick={onClickSuggestion} />
         </Col>
       </Row>
       <div style={{ marginBottom: '16px' }}></div>
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={17} xl={17}>
+        <Col xs={24} sm={24} md={{ span: 18 , offset: 2}} xl={{ span: 16 , offset: 2}}>
           <PromptInput onPromptChange={onPromptChange} />
         </Col>
         <Col xs={24} sm={24} md={2} xl={2}>
