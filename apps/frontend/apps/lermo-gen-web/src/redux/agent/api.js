@@ -6,4 +6,9 @@ export default {
     const apiUrl = `${Config.API_ENDPOINT}/agent`;
     return Http.get(apiUrl);
   },
+
+  configAgent(data) {
+    const apiUrl = `${Config.API_ENDPOINT}/config`;
+    return Http.put(apiUrl, data);
+  },
 }

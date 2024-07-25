@@ -6,12 +6,6 @@ import EnterButton from '@repo/ui/enterButton';
 import ListSuggest from '@repo/ui/listSuggest';
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-// import dynamic from 'next/dynamic';
-
-// const DynamicMarkdown = dynamic(() => import('react-markdown'), {
-//   ssr: false,
-// });
-
 import actions from '@redux/article/actions';
 
 import {

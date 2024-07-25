@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends, Header, Request
 from fastapi.responses import StreamingResponse, FileResponse, JSONResponse
 
-from app.engine import create_podcast_script, text_to_voice, create_content_suggestions, create_article
+from app.engine import create_podcast_script, text_to_voice, create_content_suggestions, create_article, config_agent
 import json
 import logging
 
@@ -32,47 +32,35 @@ async def update_agent(request: Request):
     logging.error(f"An error occurred: {e}")
     raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/config")
-async def config():
-  try:
-      with open('/app/app/config.json', 'r') as file:
-          config_data = json.load(file)
-      return JSONResponse(content={"data": config_data}, media_type="application/json")
-  except Exception as e:
-    logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
-    logging.error(f"An error occurred: {e}")
-    raise HTTPException(status_code=500, detail=str(e))
 
-@router.post("/config")
-async def config(request: Request):
-  try:
-    params = await request.json()
+@router.put("/config")
+async def update_config(request: Request):
+    try:
+        params = await request.json()
+        print(params)
+        if all(param == "" for param in [params.get(key, "") for key in ["agentName", "voiceName", "podcastName", "podcastSpeed"]]):
+            return JSONResponse(content={"message": "No changes to apply."}, media_type="application/json")
 
-    return JSONResponse(content={
-            "config": "content"
-        }, media_type="application/json")
-  except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+        # Read the existing configuration
+        try:
+            with open('/app/app/config.json', 'r') as file:
+                existing_config = json.load(file)
+        except FileNotFoundError:
+            existing_config = {}
 
-# @router.post("/podcast")
-# async def chat_with_model(request: Request):
-#   try:
-#     scheme = request.url.scheme
-#     netloc = request.url.netloc
-#     params = await request.json()
-#     prompt = params.get("prompt")
-#     text = create_podcast_script(prompt)
+        # Merge the existing configuration with the new values
+        new_config = {**existing_config, **{key: params[key] for key in ["agentName", "voiceName", "podcastName", "podcastSpeed"] if params.get(key)}}
 
-#     filePath = text_to_voice(text, file_path_full, speaker)
-#     full_url = f"{scheme}://{netloc}{filePath}"
+        # Write the merged configuration back to the file
+        with open('/app/app/config.json', 'w') as file:
+            json.dump(new_config, file)
 
-#     return JSONResponse(content={
-#             "full_url": full_url
-#         }, media_type="application/json")
-#   except Exception as e:
-#     logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
-#     logging.error(f"An error occurred: {e}")
-#     raise HTTPException(status_code=500, detail=str(e))
+        config_agent()
+
+        return JSONResponse(content={"message": "Configuration updated successfully.", "data": new_config}, media_type="application/json")
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/podcast")
 async def chat_llama(request: Request) -> StreamingResponse:

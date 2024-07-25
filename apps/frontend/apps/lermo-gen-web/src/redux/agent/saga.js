@@ -22,8 +22,26 @@ function* getAgent() {
   }
 }
 
+function* configAgent(payload) {
+  const { data } = payload;
+  const res = yield call(agentAPI.configAgent, data);
+  if (res.data) {
+    yield put({
+      type: actions.CONFG_AGENT_SUCCESS,
+      payload: res.data,
+    });
+    message.success('Seleted Agent');
+  } else {
+    yield put({
+      type: actions.CONFG_AGENT_FAIL,
+    });
+    message.error('Can\'t Seleted Agent');
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeEvery(actions.GET_AGENT, getAgent),
+    takeEvery(actions.CONFG_AGENT, configAgent),
   ]);
 }

@@ -20,21 +20,8 @@ const AgentMenu = ({ }) => {
   const onClick = (e) => {
     console.log('click ', e.key);
     setCurrent(e.key);
+    dispatch(actions.configAgent({ 'agentName': e.key }))
   }
-
-  // const onClick = (e) => {
-  //   console.log('click ', e);
-  //   // setCurrent(e.key);
-  // };
-  // const menuItems = agents.map((agent, index) => (
-  //   <Menu.Item key={index} >
-  //     {/* <div onClick={onClickAgent(agent.name)}>  */}
-  //     <UserOutlined /> {agent.name} <br />
-  //     {agent.role}
-  //     {/* </div> */}
-  //   </Menu.Item>
-  // ));
-
 
   const items = agents.map((agent, index) => ({
     label: agent.name,

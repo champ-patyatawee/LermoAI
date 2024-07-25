@@ -7,6 +7,10 @@ const actions = {
   UPDATE_AGENT_SUCCESS : 'UPDATE_AGENT_SUCCESS',
   UPDATE_AGENT_FAIL : 'UPDATE_AGENT_FAIL',
 
+  CONFG_AGENT: 'CONFG_AGENT',
+  CONFG_AGENT_SUCCESS : 'CONFG_AGENT_SUCCESS',
+  CONFG_AGENT_FAIL : 'CONFG_AGENT_FAIL',
+
   getAgent: () => ({
     type: actions.GET_AGENT
   }),
@@ -16,6 +20,10 @@ const actions = {
     data: data
   }),
 
+  configAgent: (data) => ({
+    type: actions.CONFG_AGENT,
+    data: data
+  }),
 }
 
 export default actions
