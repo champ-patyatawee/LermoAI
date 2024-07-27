@@ -1,0 +1,16 @@
+FROM ghcr.io/ggerganov/llama.cpp:server--b1-9635529
+
+RUN apt-get install curl
+
+RUN mkdir -p /models && \
+    chmod -R 777 /models
+
+RUN curl -L https://huggingface.co/MaziyarPanahi/Meta-Llama-3-8B-Instruct-GGUF/resolve/main/Meta-Llama-3-8B-Instruct.Q4_K_S.gguf --output /models/Meta-Llama-3-8B-Instruct.Q4_K_S.gguf
+
+ENTRYPOINT /server --model /models/Meta-Llama-3-8B-Instruct.Q4_K_S.gguf \
+        -c 512 \
+        --host 0.0.0.0 \
+        --port 8080 \
+        --ctx-size 2048 \
+        --parallel 1 \
+        --n-predict 2048

@@ -10,11 +10,6 @@ const HeaderMain = ({ onClickCollapsed = () => {} }) => {
   return (
     <Style>
       <div className="main-menu">
-        <div className="main-menu-item collapse-btn" onClick={onClickCollapsed}>
-          <MainButton>
-            <MenuOutlined />
-          </MainButton>
-        </div>
         <div className="main-menu-item">
           <Logo />
         </div>
