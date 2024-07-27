@@ -35,7 +35,7 @@ const Article = () => {
     <>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={{ span: 20 , offset: 2}} xl={{ span: 19 , offset: 2}}>
-          <div style={{ minHeight: '70vh', background: '#ebebeb', borderRadius: '8px'}}>
+          <div style={{ minHeight: '70vh', background: '#ebebeb91', borderRadius: '8px', padding: '16px'}}>
             <Markdown >{article}</Markdown>
           </div>
         </Col>

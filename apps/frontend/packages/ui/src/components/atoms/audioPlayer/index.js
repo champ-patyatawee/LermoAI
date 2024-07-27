@@ -1,28 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { DoubleRightOutlined, DoubleLeftOutlined } from '@ant-design/icons';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 
 import Style from './style';
 
-const AudioPlayer = ({ src, type }) => {
+const AudioPlayer = ({ src }) => {
   const videoRef = useRef();
-
+  
   useEffect(() => {
     const videoJsOptions = {
       aspectRatio: '16:9',
       playsinline: true,
       fluid: true,
-      autoplay: false,
+      autoplay: true,
       muted: false,
       controls: true,
       playbackRates: [0.75, 1, 1.25, 1.5, 2],
-      sources: [
-        {
-          type: type || "video/mp4",
-          src: src
-        }
-      ],
 
       controlBar: {
         children: {

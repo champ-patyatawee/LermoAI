@@ -5,7 +5,7 @@ const borderRadiusPlayer = '16px';
 export default styled.div`
   .vjs-lermo {
     font-size: 14px;
-    background: #ff9180;
+    background: black;
 
     &.video-js {
       border-radius: ${borderRadiusPlayer};
