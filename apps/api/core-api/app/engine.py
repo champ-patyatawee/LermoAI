@@ -17,9 +17,6 @@ def init_engine():
   global llm
   global agent
   global VOICE_ENGINE
-
-
-
   if not llm:
     llm = ChatOpenAI(model="gpt-4-turbo", temperature=0.5)
   if not VOICE_ENGINE:

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  core-api:
+    build:
+      context: apps/api/core-api
+      args:
+        - OPENAI_API_BASE=https://api.openai.com/v1
+        - OPENAI_API_KEY=sk-proj-xxx
+    ports:
+      - "8000:8000"
+  lermo-gen-web:
+    build:
+      context: apps/frontend
+    ports:
+      - "3000:3000"
+

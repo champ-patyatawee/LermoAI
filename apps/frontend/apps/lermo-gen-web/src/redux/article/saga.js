@@ -22,7 +22,6 @@ function* getArticle() {
 function* createArticle(payload) {
   const { data } = payload;
   const res = yield call(articleAPI.createArticle, data);
-  message.success('Creating Article');
   if (res.data) {
     yield put({
       type: actions.CREATE_ARTICLE_SUCCESS,

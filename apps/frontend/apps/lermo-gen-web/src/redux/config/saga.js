@@ -22,7 +22,6 @@ function* getPodcast() {
 function* createPodcast(payload) {
   const { data } = payload;
   const res = yield call(podcastAPI.createPodcast, data);
-  message.success('Creating Podcast');
   if (res) {
     yield put({
       type: actions.CREATE_PODCAST_SUCCESS,
