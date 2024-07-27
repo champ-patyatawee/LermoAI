@@ -31,8 +31,8 @@ const SiderHome = ({ isCollapsed }) => {
           mode="inline"
           selectedKeys={[pathname]}
         >
-          <Menu.Item key="/article" icon={<IconArticle />}>
-            <Link legacyBehavior href="/article">
+          <Menu.Item key="/" icon={<IconArticle />}>
+            <Link legacyBehavior href="/">
               <a></a>
             </Link>
           </Menu.Item>
