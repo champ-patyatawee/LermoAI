@@ -1,0 +1,50 @@
+import styled from 'styled-components';
+
+const GuestTemplateStyle = styled.div`
+  background: #e8e8e8;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+
+  .left-container {
+    width: 500px;
+
+    .navbar {
+      padding: 20px 24px;
+    }
+
+    .content-container {
+      padding: 24px;
+    }
+  }
+
+  .right-container {
+    width: calc(100% - 500px);
+    background-image: url('bb.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  @media only screen and (max-width: 991px}) {
+    .left-container {
+      width: 100%;
+
+      .navbar {
+        margin-bottom: 50px;
+      }
+
+      .content-container {
+        max-width: 500px;
+        margin: auto;
+      }
+    }
+
+    .right-container {
+      display: none;
+    }
+  }
+`;
+
+export default GuestTemplateStyle;

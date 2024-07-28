@@ -1,6 +1,11 @@
 FROM nvidia/cuda:11.8.0-base-ubuntu22.04
 
+ARG OPENAI_API_BASE
+ARG OPENAI_API_KEY
+
 ENV PYTHON_VERSION=3.10
+ENV OPENAI_API_BASE=$OPENAI_API_BASE
+ENV OPENAI_API_KEY=$OPENAI_API_KEY
 
 RUN apt-get -qq update \
     && apt-get -qq install --no-install-recommends \
@@ -29,4 +34,4 @@ RUN python -m unidic download
 
 EXPOSE 8000
 
-# ENTRYPOINT python main.py
+ENTRYPOINT python main.py

@@ -1,0 +1,39 @@
+.button-enter {
+
+
+  .icon {
+    margin-right: 10px;
+    height: 20px;
+  }
+}
+
+.ant-btn-primary {
+  padding: 12px 24px !important;
+  background: #FC665C;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.12) !important;
+  /* border-radius: 24px !important; */
+  display: flex !important;
+  /* flex-direction: column; */
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100%;
+  width: 100%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 22px;
+
+  background: #fc665c;
+  border-color: #fc665c;
+
+  &:active {
+    background: #f75d52 !important;
+    border-color: #f75d52 !important;
+  };
+
+  &:hover {
+    color: #fff;
+    background: #f75d52 !important;
+    border-color: #f75d52 !important;
+  };
+}
