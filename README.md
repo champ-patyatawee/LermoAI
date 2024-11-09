@@ -2,7 +2,7 @@
 
 ***AI Agent for Personalized Learning***
 
-LermoAI is an open-source project that aims to revolutionize the way you learn. By generating personalized content tailored to your preferences, LermoAI ensures that your learning experience is both efficient and enjoyable. Whether you prefer reading articles, listening to podcasts, or watching videos, LermoAI creates custom learning materials just for you. Choose your AI agent and embark on a learning journey that's perfectly suited to your needs.
+LermoAI is an open-source project for personalized learning, offering chat, search, article writing, podcast creation, and video generation tailored to your learning style.
 
 ![](docs/app.png)
 
