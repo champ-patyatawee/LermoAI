@@ -96,7 +96,7 @@ At Lermo, we believe in making education accessible to all. That's why it is com
 
 Contributor: We are currently building a small group of contributors for this project as it is still in its initial stages. We welcome individuals who are interested in joining our team and contribute to the development and improvement of this project. Please reach out to us at contact@lermo.io to express your interest and discuss potential contributions.
 
-Sponsorship: We are planning to utilize platforms such as Github Sponsors, Patreon, and buymeacoffee to gather financial support for this project. Your sponsorship will greatly assist us in furthering our mission of changing the education system. Stay tuned for more information on how you can sponsor and support our project through these platforms.
+Sponsorship: We are planning to utilize platforms such as GitHub Sponsors, Patreon, and buymeacoffee to gather financial support for this project. Your sponsorship will greatly assist us in furthering our mission of changing the education system. Stay tuned for more information on how you can sponsor and support our project through these platforms.
 
 # Lermo Mission
 
