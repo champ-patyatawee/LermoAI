@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { Sidebar } from '@/components/Sidebar'
 import { settingsApi, type Settings } from '@/api/settings'
 
@@ -20,6 +20,157 @@ const PROVIDERS: LLMProvider[] = [
     description: 'Use your own OpenAI-compatible API endpoint',
   },
 ]
+
+function ModelSelector({
+  apiKey,
+  selectedModel,
+  onSelect,
+}: {
+  apiKey: string
+  selectedModel: string
+  onSelect: (model: string) => void
+}) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [search, setSearch] = useState('')
+  const [models, setModels] = useState<{ id: string; name: string }[]>([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const fetchedRef = useRef(false)
+
+  const fetchModels = useCallback(async () => {
+    if (!apiKey || fetchedRef.current) return
+
+    setLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('https://openrouter.ai/api/v1/models', {
+        headers: { Authorization: `Bearer ${apiKey}` },
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch models')
+      }
+
+      const data = await response.json()
+
+      const modelList = (data.data || []).map((m: { id: string; name?: string }) => ({
+        id: m.id,
+        name: m.name || m.id,
+      }))
+
+      setModels(modelList)
+      fetchedRef.current = true
+    } catch (err) {
+      setError('Failed to load models. Check your API key.')
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
+  }, [apiKey])
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+        setSearch('')
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  useEffect(() => {
+    if (isOpen && apiKey && !fetchedRef.current) {
+      fetchModels()
+    }
+  }, [isOpen, apiKey, fetchModels])
+
+  const filteredModels = models.filter(
+    (m) =>
+      m.id.toLowerCase().includes(search.toLowerCase()) ||
+      m.name.toLowerCase().includes(search.toLowerCase())
+  )
+
+  return (
+    <div ref={wrapperRef} className="relative">
+      <label className="block text-sm font-medium text-gray-700 mb-1">Model</label>
+      <button
+        type="button"
+        onClick={() => {
+          if (apiKey) {
+            setIsOpen(!isOpen)
+            if (!isOpen) {
+              fetchedRef.current = false
+            }
+          }
+        }}
+        disabled={!apiKey}
+        className={`w-full px-3 py-2.5 border rounded-lg bg-white text-left focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent flex items-center justify-between hover:border-gray-400 transition-colors ${
+          !apiKey ? 'opacity-50 cursor-not-allowed' : ''
+        }`}
+      >
+        <span className={selectedModel ? 'text-gray-900 truncate' : 'text-gray-400'}>
+          {!apiKey ? 'Enter API key first' : selectedModel || 'Select a model'}
+        </span>
+        {apiKey && (
+          <span className={`material-icons text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+            expand_more
+          </span>
+        )}
+      </button>
+
+      {isOpen && apiKey && (
+        <div className="absolute z-50 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl max-h-72 overflow-hidden">
+          {loading ? (
+            <div className="p-4 text-center text-gray-500">
+              <span className="material-icons animate-spin">sync</span>
+              <p className="mt-2 text-sm">Loading models...</p>
+            </div>
+          ) : error ? (
+            <div className="p-4 text-center text-red-500 text-sm">{error}</div>
+          ) : (
+            <>
+              <div className="p-2 border-b border-gray-100 bg-gray-50">
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search models..."
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                  autoFocus
+                />
+              </div>
+              <div className="max-h-48 overflow-y-auto">
+                {filteredModels.map((model) => (
+                  <button
+                    key={model.id}
+                    type="button"
+                    onClick={() => {
+                      onSelect(model.id)
+                      setIsOpen(false)
+                      setSearch('')
+                    }}
+                    className="w-full px-4 py-2.5 text-left text-sm hover:bg-primary/5 focus:outline-none flex items-center justify-between group"
+                  >
+                    <span className="truncate text-gray-700 group-hover:text-primary">{model.name}</span>
+                    {selectedModel === model.id && (
+                      <span className="material-icons text-primary text-sm">check</span>
+                    )}
+                  </button>
+                ))}
+                {filteredModels.length === 0 && (
+                  <div className="px-4 py-3 text-sm text-gray-400 text-center">No models found</div>
+                )}
+              </div>
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export function SettingsPage() {
   const [settings, setSettings] = useState<Settings>({})
@@ -238,19 +389,11 @@ export function SettingsPage() {
                             />
                           </div>
                         ) : (
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Model</label>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                const model = prompt('Enter model name:', providerSettings.model)
-                                if (model) selectModel(provider.id, model)
-                              }}
-                              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg bg-white text-left focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm hover:border-gray-400 transition-colors"
-                            >
-                              {providerSettings.model || 'Click to select model'}
-                            </button>
-                          </div>
+                          <ModelSelector
+                            apiKey={providerSettings.apiKey}
+                            selectedModel={providerSettings.model}
+                            onSelect={(model) => selectModel(provider.id, model)}
+                          />
                         )}
                       </div>
                     )}
