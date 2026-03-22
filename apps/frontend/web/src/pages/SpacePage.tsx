@@ -205,7 +205,6 @@ export function SpacePage() {
                   <div className="text-center text-gray-500">
                     <span className="material-icons text-4xl mb-4">folder_open</span>
                     <p>Select a topic to view content</p>
-                    <p className="text-sm mt-2">Or click "Add Topic" to create a new one</p>
                   </div>
                 </div>
               )}
