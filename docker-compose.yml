@@ -1,0 +1,38 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/frontend/web/node_modules
+    working_dir: /app/apps/frontend/web
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - agent-api
+    networks:
+      - lermo-network
+
+  agent-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent-api
+    ports:
+      - "8000:8000"
+      - "5100-5200:5100-5200"
+    volumes:
+      - ./apps/backend/agent-api:/app
+      - ./apps/backend/agent-api/storage:/app/storage
+    environment:
+      - STORAGE_PATH=/app/storage
+      - AGENT_STORAGE_PATH=/app/storage/agent
+    networks:
+      - lermo-network
+
+networks:
+  lermo-network:
+    driver: bridge

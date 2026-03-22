@@ -1,0 +1,13 @@
+{
+  "name": "lermo-ai-2026",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel -r run dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
