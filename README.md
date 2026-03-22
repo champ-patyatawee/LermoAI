@@ -3,6 +3,9 @@
 AI Agent for Personalized Learning
 
 
+https://github.com/user-attachments/assets/0e71f134-708e-458c-b0a9-6b56ee3c4cf2
+
+
 # Getting Started
 
 ## Project Structure
