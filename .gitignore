@@ -93,3 +93,4 @@ coverage/
 .cache/
 
 apps/backend/agent-api/storage/spaces
+apps/backend/agent-api/storage/settings.json

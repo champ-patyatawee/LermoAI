@@ -23,7 +23,7 @@ app.include_router(quiz.router)
 
 @app.get("/")
 def read_root():
-    return {"message": "Lermo AI 2026 API", "status": "running"}
+    return {"message": "LermoAI API", "status": "running"}
 
 
 @app.get("/health")
